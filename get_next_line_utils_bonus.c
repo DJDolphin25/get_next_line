@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: theoppon <theoppon@student.42belgium.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/10 23:47:33 by theoppon          #+#    #+#             */
-/*   Updated: 2026/01/11 22:06:42 by theoppon         ###   ########.fr       */
+/*   Created: 2026/01/11 21:27:57 by theoppon          #+#    #+#             */
+/*   Updated: 2026/01/11 21:28:22 by theoppon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	gnl_strlen(const char *s)
 {

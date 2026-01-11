@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: theoppon <theoppon@student.42belgium.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/29 18:52:36 by theoppon          #+#    #+#             */
-/*   Updated: 2026/01/11 21:22:39 by theoppon         ###   ########.fr       */
+/*   Created: 2026/01/11 21:24:59 by theoppon          #+#    #+#             */
+/*   Updated: 2026/01/11 21:25:45 by theoppon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static void	update_saved(char **saved, char *rest)
 {
@@ -83,14 +83,14 @@ static char	*read_and_save(int fd, char *saved)
 
 char	*get_next_line(int fd)
 {
-	static char	*saved;
+	static char	*saved[MAX_FD];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd >= MAX_FD || BUFFER_SIZE <= 0)
 		return (NULL);
-	saved = read_and_save(fd, saved);
-	if (!saved)
+	saved[fd] = read_and_save(fd, saved[fd]);
+	if (!saved[fd])
 		return (NULL);
-	line = extract_line(&saved);
+	line = extract_line(&saved[fd]);
 	return (line);
 }
