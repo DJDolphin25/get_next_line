@@ -140,37 +140,10 @@ Special care is taken to avoid NULL dereferencing, as required by strict testing
 
 ---
 
-## Testing Results
-
-### Official Tests (without --strict)
-✅ **100% Pass Rate**
-- gnlTester: All tests passing
-- fsoares: All tests passing
-- Multiple buffer sizes: 1, 10, 42, 1000000
-- Bonus: Multiple file descriptors working correctly
-
-### Strict Mode Tests
-⚠️ **99% Pass Rate**
-- One known timeout in extreme conditions:
-  - Test: `giant_line.txt` (20,000 characters)
-  - BUFFER_SIZE: 10
-  - Condition: NULL_CHECK test
-  
-This timeout is caused by O(n²) complexity in string concatenation with very large lines and very small buffer sizes. This is a known and acceptable limitation that does not affect real-world usage or project evaluation.
-
----
-
 ## Resources
 
 ### Technical References
 
-* `man 2 read`
-* `man 3 malloc`
-* `man 3 free`
-* `man 2 open`
-* `man 2 close`
-* The Open Group POSIX specification
-* 42 Network documentation on file descriptors and static variables
 * Classic tutorials on buffered I/O in C
 
 ### Use of Artificial Intelligence
@@ -195,15 +168,3 @@ All code was written, tested, and debugged by the author. **No AI-generated code
 * **Bonus**: The bonus implementation supports up to `MAX_FD` (1024) simultaneous file descriptors, each with independent state management.
 * **Performance note**: With very small BUFFER_SIZE values (e.g., 10) and extremely large lines (20,000+ characters), performance may degrade due to O(n²) string concatenation complexity. This is a known limitation of the malloc-based concatenation approach and does not affect correctness or real-world usability.
 
----
-
-## Project Status
-
-- ✅ Mandatory part: Complete and tested
-- ✅ Bonus part: Complete and tested
-- ✅ Norminette: Passed
-- ✅ Memory leaks: None detected
-- ✅ Edge cases: Handled
-- ✅ Multiple file descriptors: Supported
-
-**Final Grade: 125/100**
